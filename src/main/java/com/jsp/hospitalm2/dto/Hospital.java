@@ -2,6 +2,7 @@ package com.jsp.hospitalm2.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,7 +18,7 @@ public class Hospital {
 	private int id;
 	private String name;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	private List<Branches> branches;
 	
 }

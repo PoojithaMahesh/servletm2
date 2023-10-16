@@ -26,4 +26,13 @@ public class HospitalDao {
 		return null;
 	}
 
+	public Hospital deleteHospitalById(int id) {
+		Optional<Hospital>  optional=repo.findById(id);
+		if(optional.isPresent()) {
+			repo.delete(optional.get());
+			return optional.get();
+		}
+		return null;
+	}
+
 }

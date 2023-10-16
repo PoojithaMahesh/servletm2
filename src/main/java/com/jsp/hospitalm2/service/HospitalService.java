@@ -24,4 +24,30 @@ public class HospitalService {
 		return new ResponseEntity<ResponseStructure<Hospital>>(structure,HttpStatus.CREATED);
 	}
 
+	public ResponseEntity<ResponseStructure<Hospital>> findHospitalById(int id) {
+		Hospital dbHospital=hospitalDao.findHospitalById(id);
+		if(dbHospital!=null) {
+			ResponseStructure<Hospital>  structure=new ResponseStructure<Hospital>();
+			structure.setMessage("Hospital data fetched successfully");
+			structure.setStatus(HttpStatus.CREATED.value());
+			structure.setData(dbHospital);
+			return new ResponseEntity<ResponseStructure<Hospital>>(structure,HttpStatus.CREATED);
+		}else {
+			return null;
+		}
+	}
+
+	public ResponseEntity<ResponseStructure<Hospital>> deleteHospitalById(int id) {
+		Hospital dbHospital=hospitalDao.deleteHospitalById(id);
+		if(dbHospital!=null) {
+			ResponseStructure<Hospital>  structure=new ResponseStructure<Hospital>();
+			structure.setMessage("Hospital data deleted successfully");
+			structure.setStatus(HttpStatus.CREATED.value());
+			structure.setData(dbHospital);
+			return new ResponseEntity<ResponseStructure<Hospital>>(structure,HttpStatus.CREATED);
+		}else {
+			return null;
+		}
+	}
+
 }
